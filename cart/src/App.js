@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Cart from './components/component/Cart';
@@ -25,12 +25,8 @@ function App() {
     //숫자가 0이 되지않게 리턴
     if(arr[ind].amount === 0) arr[ind].amount = 1;
     setCart([...arr]);
-
-
   }
 
- 
-  
   return (
     <div>
       <Nav cart={cart.length} />
