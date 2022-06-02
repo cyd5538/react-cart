@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Cart = ({ cart, setCart, handleChange }) => {
   const [price, setPrice] = useState(0);
-
+  
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
     setCart(arr);
@@ -12,7 +12,6 @@ const Cart = ({ cart, setCart, handleChange }) => {
   const handlePrice = () => {
     let money = 0;
     cart.map((item) => (money += item.amount * item.price));
-    console.log(money)
     setPrice(money);
   };
 
@@ -22,7 +21,8 @@ const Cart = ({ cart, setCart, handleChange }) => {
 
   return (
     <div className="cart_flex">
-      <div className="article">
+      {cart.length === 0 ? <div className="empty">카트가 비어있습니다</div> : (<div>
+        <div className="article">
         {cart.map((item) => (
           <div className="article_box" key={item.id}>
             <div className="cart_img">
@@ -35,16 +35,20 @@ const Cart = ({ cart, setCart, handleChange }) => {
               <button onClick={() => handleChange(item, -1)}>-</button>
             </div>
             <div className="remove">
-              <div>{item.price}</div>
+              <div>{item.amount*item.price}</div>
               <button onClick={() => handleRemove(item.id)}>Remove</button>
             </div>
           </div>
         ))}
       </div>
       <div className="total">
-        <span>Total</span>
-        <span>{price} 원</span>
+        <div>
+          <span>Total</span>
+          <span>{price} 원</span>
+        </div> 
+        <button className="result">결제하기</button>
       </div>
+      </div>)}
     </div>
   );
 };

@@ -1,29 +1,35 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import Cart from './components/compo/Cart';
-import Container from './components/compo/Container';
-import Nav from './components/compo/Nav';
+import Cart from './components/component/Cart';
+import Container from './components/component/Container';
+import Nav from './components/component/Nav';
 
 
 function App() {
   const [cart, setCart] = useState([]);
 
-  const handleClick = (item) => {
-    console.log(cart);
-    if(cart.indexOf(item) !== -1) return;
-    setCart([...cart, item]);
-    
-  };
 
-  const handleChange = (item, d) => {
+  const handleClick = (item) => {
+    //중복으로 안들어가게
+    if(cart.indexOf(item) !== -1) return;
+    setCart([...cart, item]); 
+  };
+  
+  const handleChange = (item, number) => {
     const ind = cart.indexOf(item);
     const arr = cart;
-    arr[ind].amount += d;
 
+    arr[ind].amount += number;
+    
+    //숫자가 0이 되지않게 리턴
     if(arr[ind].amount === 0) arr[ind].amount = 1;
     setCart([...arr]);
+
+
   }
+
+ 
   
   return (
     <div>

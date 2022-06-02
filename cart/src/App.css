@@ -69,7 +69,7 @@ nav div a{
   transform: scale(1.01);
 }
 
-.cart_flex{
+.cart_flex div{
   display: flex;
 }
 
@@ -146,6 +146,8 @@ button{
   width: 30%;
   padding-top: 200px;
   padding-left: 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .total span{
@@ -158,4 +160,21 @@ button{
 
 .total span:last-child{
   margin-left: 20px;
+
+}.result{
+  cursor: pointer;
+  background-color: rgb(9, 1, 1);
+  color: white;
+  width: 150px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.empty{
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
 }

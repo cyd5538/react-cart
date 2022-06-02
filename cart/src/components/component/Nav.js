@@ -6,7 +6,7 @@ const Nav = ({cart}) => {
   return (
     <nav>
       <h1><Link to="/">Home</Link></h1>
-      <div><Link to="/cart"><AiOutlineShoppingCart/><span className='box'>{cart}</span></Link></div>
+      <div><Link to="/cart"><AiOutlineShoppingCart/>{cart === 0 ? "" : <span className='box'>{cart}</span>}</Link></div>
     </nav>
   )
 }
